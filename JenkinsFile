@@ -109,7 +109,11 @@ sudo docker run -d --name bank-app -p 80:5000 ${img}
 """
                         
                         // Fix permissions on the script and SSH key
-                        bat "icacls \"${key}\" /inheritance:r /grant:r \"%USERNAME%\":F"
+                        bat """
+                        icacls \"${key}\" /inheritance:r
+                        icacls \"${key}\" /remove \"BUILTIN\\Users\"
+                        icacls \"${key}\" /grant:r \"%USERNAME%\":R
+                        """
                         
                         // Copy the script to EC2 and execute it
                         bat "scp -o StrictHostKeyChecking=no -i \"${key}\" deploy-commands.sh ${user}@${host}:/home/${user}/deploy-commands.sh"
