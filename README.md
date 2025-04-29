@@ -11,4 +11,4 @@ Performs operations as follows:
 6. Display User's basic details.
 7. Display User's account Balance and latest 10 transactions.
    
-Also includes static pages with Plans/Offers and Help/ Contact Us pages.
+Also includes static pages with Plans/Offers and Help/Contact Us pages.
